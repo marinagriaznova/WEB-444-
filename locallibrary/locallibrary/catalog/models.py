@@ -40,9 +40,20 @@ class BooxInstanceModel(models.Model):
 
 
 class GenreModel(models.Model):
+    name = models.CharField(max_lensth=200)
+
+    def __str__(self):
+        return f' ({self.book.genre})'
 
 
 class AuthorModel(models.Model):
+    name = models.CharField(max_lensth=200)
+    date_of_birth = models.DateField(null=True, blank=True)
+    date_of_death = models.DateField(null=True, blank=True)
+    books = models.ForeignKey('AuthorModel', on_delete=models.RESTRICT, null=True)
+
+    def __str__(self):
+        return f'({self.book.author})'
 
 		
 	
